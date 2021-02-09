@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import MemoryCard from "./MemoryCard";
+import { MemoryCard, DefaultCard } from "./MemoryCard";
 import uniqid from "uniqid";
+import styled from "styled-components";
 
 import apple from "../images/apple.png";
 import avocado from "../images/avocado.png";
@@ -28,10 +29,16 @@ import strawberry from "../images/strawberry.png";
 import tomato from "../images/tomato.png";
 import watermelon from "../images/watermelon.png";
 
+const CardsDiv = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px auto;
+`;
+
 function CardOrganizer(props) {
   const [cards, setCards] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
-  const [numberOfCards, setNumberOfCards] = useState(4);
   const { score } = props;
 
   const gameImages = [
@@ -65,7 +72,7 @@ function CardOrganizer(props) {
   useEffect(() => {
     const generateCards = () => {
       let cardsArray = [];
-      let numberOfCards = score < 5 ? 4 : score < 10 ? 6 : score < 15 ? 8 : 10;
+      let numberOfCards = score < 5 ? 5 : score < 10 ? 7 : score < 15 ? 8 : 11;
       for (let i = 0; i < numberOfCards; i++) {
         let randomIndex = Math.floor(Math.random() * gameImages.length);
         cardsArray.push(randomIndex);
@@ -76,20 +83,22 @@ function CardOrganizer(props) {
   }, [score, gameImages.length]);
 
   const handleCardClicked = (e) => {
-    // add to clickedCards list
-    setClickedCards(clickedCards.concat(e.target.id));
-
-    // send incrementScore to parent
-    if (clickedCards.includes(e.target.id)) {
+    if (e.target.id === "none") {
+      let bool =
+        cards.every((i) => clickedCards.includes(i)) && clickedCards.length > 0;
+      props.incrementScore(bool);
+    } else if (clickedCards.includes(e.target.id)) {
       setClickedCards([]);
       props.incrementScore(false);
     } else {
+      // add to clickedCards list
+      setClickedCards(clickedCards.concat(e.target.id));
       props.incrementScore(true);
     }
   };
 
   return (
-    <div>
+    <CardsDiv>
       {cards.map((card) => {
         return (
           <MemoryCard
@@ -100,7 +109,8 @@ function CardOrganizer(props) {
           />
         );
       })}
-    </div>
+      <DefaultCard cardClicked={handleCardClicked} id="none" />
+    </CardsDiv>
   );
 }
 
