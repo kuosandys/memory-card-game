@@ -31,7 +31,8 @@ import watermelon from "../images/watermelon.png";
 function CardOrganizer(props) {
   const [cards, setCards] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
-  const { score, setScore, highScore, setHighScore } = props;
+  const [numberOfCards, setNumberOfCards] = useState(4);
+  const { score } = props;
 
   const gameImages = [
     apple,
@@ -62,29 +63,28 @@ function CardOrganizer(props) {
   ];
 
   useEffect(() => {
-    if (clickedCards) {
-      const generateCards = () => {
-        let cardsArray = [];
-        for (let i = 0; i < props.numberOfCards; i++) {
-          let randomIndex = Math.floor(Math.random() * gameImages.length);
-          cardsArray.push(randomIndex);
-        }
-        setCards(cardsArray);
-      };
-      generateCards();
-    }
-  }, [clickedCards, props.numberOfCards, gameImages.length]);
+    const generateCards = () => {
+      let cardsArray = [];
+      let numberOfCards = score < 5 ? 4 : score < 10 ? 6 : score < 15 ? 8 : 10;
+      for (let i = 0; i < numberOfCards; i++) {
+        let randomIndex = Math.floor(Math.random() * gameImages.length);
+        cardsArray.push(randomIndex);
+      }
+      setCards(cardsArray);
+    };
+    generateCards();
+  }, [score, gameImages.length]);
 
   const handleCardClicked = (e) => {
+    // add to clickedCards list
     setClickedCards(clickedCards.concat(e.target.id));
+
+    // send incrementScore to parent
     if (clickedCards.includes(e.target.id)) {
-      setScore(0);
       setClickedCards([]);
+      props.incrementScore(false);
     } else {
-      setScore((prevScore) => prevScore + 1);
-      setHighScore((prevHighScore) =>
-        score >= prevHighScore ? score + 1 : prevHighScore
-      );
+      props.incrementScore(true);
     }
   };
 

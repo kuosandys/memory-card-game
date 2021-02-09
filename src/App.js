@@ -4,20 +4,20 @@ import { useState } from "react";
 import Scoreboard from "./components/Scoreboard.js";
 
 function App() {
-  const [numberOfCards, setNumberOfCards] = useState(5);
-  const [highScore, setHighScore] = useState(0);
   const [score, setScore] = useState(0);
+
+  const handleScoreChanged = (bool) => {
+    if (bool === true) {
+      setScore((prev) => prev + 1);
+    } else {
+      setScore(0);
+    }
+  };
 
   return (
     <div className="App">
-      <Scoreboard currentScore={score} highScore={highScore} />
-      <CardOrganizer
-        numberOfCards={numberOfCards}
-        score={score}
-        setScore={setScore}
-        highScore={highScore}
-        setHighScore={setHighScore}
-      />
+      <Scoreboard score={score} />
+      <CardOrganizer score={score} incrementScore={handleScoreChanged} />
     </div>
   );
 }
