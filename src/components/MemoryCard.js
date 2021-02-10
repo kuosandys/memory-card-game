@@ -4,6 +4,7 @@ const CardDiv = styled.div`
   margin: 10px;
   padding: 0;
   border: 3px solid ${(props) => props.theme.tertiaryColor};
+  border-radius: 5px;
   height: 105px;
   width: 105px;
   overflow: hidden;
