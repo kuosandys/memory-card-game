@@ -40,10 +40,11 @@ const fade = keyframes`
 `;
 
 const CardsDiv = styled.div`
+  max-width: 400px;
+  margin: 15px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 15px auto;
 
   &.fadeIn {
     * {
@@ -95,7 +96,7 @@ function CardOrganizer(props) {
   useEffect(() => {
     const generateCards = () => {
       let cardsArray = [];
-      let numberOfCards = score < 5 ? 5 : score < 10 ? 7 : score < 15 ? 8 : 11;
+      let numberOfCards = score < 5 ? 5 : score < 10 ? 8 : score < 15 ? 8 : 11;
       for (let i = 0; i < numberOfCards; i++) {
         let randomIndex = Math.floor(Math.random() * gameImages.length);
         cardsArray.push(randomIndex);

@@ -10,18 +10,20 @@ const AppDiv = styled.div`
   justify-content: normal;
   align-items: center;
   background-color: ${(props) => props.theme.mainColor};
-  padding: 20px;
+  padding: 20px 10px;
   text-align: center;
   max-width: 500px;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  position: relative;
 
   h1 {
-    margin: 10px;
+    margin: 10px 0;
     color: ${(props) => props.theme.accentColor};
   }
 
   h2 {
-    margin: 5px;
+    margin: 5px 0;
     font-size: 24px;
     font-style: italic;
     color: ${(props) => props.theme.tertiaryColor};
@@ -30,8 +32,15 @@ const AppDiv = styled.div`
   h3 {
     font-weight: 400;
     font-size: 16px;
-    margin: 15px auto;
+    margin: 15px 0;
     line-height: 1.3;
+  }
+
+  .authorTag {
+    position: absolute;
+    bottom: 2px;
+    color: ${(props) => props.accentColor};
+    font-size: 12px;
   }
 `;
 
@@ -59,11 +68,17 @@ function App() {
         <h1>Memory Card Game</h1>
         <h2>Healthy Edition!</h2>
         <h3>
-          Choose the fruit or vegetable that you haven't seen before. If none of
-          them are new, click "None".
+          Click on the fruit or vegetable that you haven't seen before. If none
+          of them are new, click "None".
         </h3>
         <Scoreboard score={score} />
         <CardOrganizer score={score} incrementScore={handleScoreChanged} />
+        <p className="authorTag">
+          &#169;{" "}
+          <a href="https://github.com/kuosandys/memory-card-game">
+            Sandy S. Kuo
+          </a>
+        </p>
       </AppDiv>
     </ThemeProvider>
   );

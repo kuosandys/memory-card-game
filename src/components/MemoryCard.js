@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CardDiv = styled.div`
-  margin: 10px;
+  margin: 5px;
   padding: 0;
   border: 3px solid ${(props) => props.theme.tertiaryColor};
   border-radius: 5px;
@@ -16,7 +16,7 @@ const CardDiv = styled.div`
   &:hover {
     height: 111px;
     width: 111px;
-    margin: 7px;
+    margin: 2px;
     outline: none;
   }
 
