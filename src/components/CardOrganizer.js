@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MemoryCard, DefaultCard } from "./MemoryCard";
 import uniqid from "uniqid";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import apple from "../images/apple.png";
 import avocado from "../images/avocado.png";
@@ -29,16 +29,39 @@ import strawberry from "../images/strawberry.png";
 import tomato from "../images/tomato.png";
 import watermelon from "../images/watermelon.png";
 
+const fade = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  
+`;
+
 const CardsDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 15px auto;
+
+  &.fadeIn {
+    * {
+      animation: ${fade} 0.3s linear forwards;
+    }
+  }
+
+  &.fadeOut {
+    * {
+      animation: ${fade} 0.3s linear backwards;
+    }
+  }
 `;
 
 function CardOrganizer(props) {
   const [cards, setCards] = useState([]);
   const [clickedCards, setClickedCards] = useState([]);
+  const [fadeEffect, setFadeEffect] = useState("");
   const { score } = props;
 
   const gameImages = [
@@ -80,6 +103,7 @@ function CardOrganizer(props) {
       setCards(cardsArray);
     };
     generateCards();
+    // setFadeEffect("fadeIn");
   }, [score, gameImages.length]);
 
   const handleCardClicked = (e) => {
@@ -95,10 +119,11 @@ function CardOrganizer(props) {
       setClickedCards(clickedCards.concat(e.target.id));
       props.incrementScore(true);
     }
+    setFadeEffect("fadeOut");
   };
 
   return (
-    <CardsDiv>
+    <CardsDiv className={fadeEffect}>
       {cards.map((card) => {
         return (
           <MemoryCard

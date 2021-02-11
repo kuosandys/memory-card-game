@@ -13,6 +13,13 @@ const CardDiv = styled.div`
   justify-content: center;
   background: hsl(50, 5%, 44%);
 
+  &:hover {
+    height: 111px;
+    width: 111px;
+    margin: 7px;
+    outline: none;
+  }
+
   img {
     margin: 0;
   }
