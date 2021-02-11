@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/memory-card-game/static/css/main.7e04909a.chunk.css",
-    "main.js": "/memory-card-game/static/js/main.8ee97487.chunk.js",
-    "main.js.map": "/memory-card-game/static/js/main.8ee97487.chunk.js.map",
+    "main.js": "/memory-card-game/static/js/main.fb4f6823.chunk.js",
+    "main.js.map": "/memory-card-game/static/js/main.fb4f6823.chunk.js.map",
     "runtime-main.js": "/memory-card-game/static/js/runtime-main.0f663a00.js",
     "runtime-main.js.map": "/memory-card-game/static/js/runtime-main.0f663a00.js.map",
     "static/css/2.679831fc.chunk.css": "/memory-card-game/static/css/2.679831fc.chunk.css",
-    "static/js/2.66f3acf9.chunk.js": "/memory-card-game/static/js/2.66f3acf9.chunk.js",
-    "static/js/2.66f3acf9.chunk.js.map": "/memory-card-game/static/js/2.66f3acf9.chunk.js.map",
+    "static/js/2.dcc14663.chunk.js": "/memory-card-game/static/js/2.dcc14663.chunk.js",
+    "static/js/2.dcc14663.chunk.js.map": "/memory-card-game/static/js/2.dcc14663.chunk.js.map",
     "index.html": "/memory-card-game/index.html",
     "static/css/2.679831fc.chunk.css.map": "/memory-card-game/static/css/2.679831fc.chunk.css.map",
     "static/css/main.7e04909a.chunk.css.map": "/memory-card-game/static/css/main.7e04909a.chunk.css.map",
-    "static/js/2.66f3acf9.chunk.js.LICENSE.txt": "/memory-card-game/static/js/2.66f3acf9.chunk.js.LICENSE.txt",
+    "static/js/2.dcc14663.chunk.js.LICENSE.txt": "/memory-card-game/static/js/2.dcc14663.chunk.js.LICENSE.txt",
     "static/media/apple.15ca0152.png": "/memory-card-game/static/media/apple.15ca0152.png",
     "static/media/avocado.dbd002f8.png": "/memory-card-game/static/media/avocado.dbd002f8.png",
     "static/media/banana.377eb2e0.png": "/memory-card-game/static/media/banana.377eb2e0.png",
@@ -41,8 +41,8 @@
   "entrypoints": [
     "static/js/runtime-main.0f663a00.js",
     "static/css/2.679831fc.chunk.css",
-    "static/js/2.66f3acf9.chunk.js",
+    "static/js/2.dcc14663.chunk.js",
     "static/css/main.7e04909a.chunk.css",
-    "static/js/main.8ee97487.chunk.js"
+    "static/js/main.fb4f6823.chunk.js"
   ]
 }
